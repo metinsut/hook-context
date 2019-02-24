@@ -1,12 +1,24 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import { GlobalProvider } from './Context/GlobalProvider';
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import Root from './style/global/root';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const InitApp = () => {
+   return (
+      <Fragment>
+         <Root />
+         <GlobalProvider>
+            <BrowserRouter>
+               <App />
+            </BrowserRouter>
+         </GlobalProvider>
+      </Fragment>
+   );
+};
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
+ReactDOM.render(<InitApp />, document.getElementById('root'));
+
 serviceWorker.unregister();
