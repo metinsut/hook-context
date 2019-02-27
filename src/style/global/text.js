@@ -4,6 +4,13 @@ import * as cal from '../global/colours';
 export const P = styled.p`
    color: ${cal.color1};
 `;
+export const P1 = styled.p`
+   color: white;
+`;
+export const P1T = styled.p`
+   color: white;
+   background-color: rgba(0,0,0,0.1);
+`;
 
 export const H1 = styled.h1`
    font-size: 2rem;

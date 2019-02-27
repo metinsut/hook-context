@@ -1,31 +1,34 @@
 import React, { useContext, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { initYoutubeData } from '../../Context/actions/youtube';
 import { GlobalContext } from '../../Context/GlobalProvider';
-import YoutubeApi from '../../services/Youtube';
 import * as Y from '../../style/pages/youtube';
+import { P1T } from '../../style/global/text';
+import { YOUTUBE } from '../../Const/routes';
 
 const VideoListComponent = () => {
    const { youtube } = useContext(GlobalContext);
    useEffect(() => {
-      fetchApi();
-      // youtube.dispatchYoutube(api);
-   });
-
-   const fetchApi = async () => {
-      const api = await YoutubeApi();
-      console.log(api);
-   };
-
-   // const checkedItem = id => todos.dispatchYoutube({ type: 'completed', payload: id });
+      if (youtube.stateYoutube.list.length === 0) {
+         initYoutubeData(youtube);
+      }
+   }, []);
 
    return (
       <section>
          <Y.CardWrapper>
-            <Y.CardContainer>
-               <Y.CardItem>
-                  <Y.CardImage>{/* <img src={videos.thumbnail} alt={videos.title} /> */}</Y.CardImage>
-                  <Y.CardTitle>{/* <p>{videos.title}</p> */}</Y.CardTitle>
-               </Y.CardItem>
-            </Y.CardContainer>
+            {youtube.stateYoutube.list.map((item, key) => (
+               <Y.CardContainer key={key}>
+                  <Y.CardItem as={Link} to={YOUTUBE + '/' + item.id}>
+                     <Y.CardImage>
+                        <Y.Image src={item.snippet.thumbnails.high.url} alt={item.snippet.title} />
+                     </Y.CardImage>
+                     <Y.CardTitle>
+                        <P1T>{item.snippet.title}</P1T>
+                     </Y.CardTitle>
+                  </Y.CardItem>
+               </Y.CardContainer>
+            ))}
          </Y.CardWrapper>
       </section>
    );

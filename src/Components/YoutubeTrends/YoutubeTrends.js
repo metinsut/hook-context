@@ -5,9 +5,8 @@ import VideoListComponent from './VideoListComponent';
 const YoutubeTrends = () => {
    return (
       <section>
-         <h1>Youtube</h1>
          <SearchBarComponent />
-         <VideoListComponent></VideoListComponent>
+         <VideoListComponent />
       </section>
    );
 };

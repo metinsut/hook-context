@@ -12,7 +12,6 @@ const GlobalProvider = props => {
    const counts = { stateCount, dispatchCount };
    const todos = { stateTodos, dispatchTodos };
    const youtube = { stateYoutube, dispatchYoutube };
-
    return <GlobalContext.Provider value={{ counts, todos, youtube }}>{props.children}</GlobalContext.Provider>;
 };
 
