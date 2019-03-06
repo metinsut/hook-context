@@ -7,7 +7,8 @@ import * as R from './Const/routes';
 const Count = lazy(() => import('./Components/Count/Count'));
 const TodoList = lazy(() => import('./Components/TodoList/TodoList'));
 const YoutubeTrends = lazy(() => import('./Components/YoutubeTrends/YoutubeTrends'));
-const YoutubePlayer = lazy(() => import('./Components/YoutubeTrends/youtubePlayer'));
+const YoutubePlayer = lazy(() => import('./Components/YoutubePlayer/youtubePlayer'));
+const TogglePage = lazy(() => import('./Components/Toggle/Toggle'));
 
 
 const App = () => (
@@ -20,6 +21,7 @@ const App = () => (
                <Route path={R.COUNT} component={Count} />
                <Route path={R.TODOS} component={TodoList} />
                <Route exact path={R.YOUTUBE} component={YoutubeTrends} />
+               <Route path={R.TOGGLE} component={TogglePage} />
             </Switch>
             <Route path={R.YOUTUBE_ID} component={YoutubePlayer} />
          </SiteWrapper>

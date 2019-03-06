@@ -25,6 +25,9 @@ const HeaderComponent = () => (
             <A2 as={Link} to={R.YOUTUBE}>
                Youtube
             </A2>
+            <A2 as={Link} to={R.TOGGLE}>
+               Toggle
+            </A2>
          </NavItems>
       </LeftBlock>
       <RightBlock>{/* <A1>TR</A1> */}</RightBlock>
